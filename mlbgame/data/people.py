@@ -9,7 +9,7 @@ endpoints.
    http://google.github.io/styleguide/pyguide.html
 """
 
-import mlbgame.data
+from mlbgame.data import request
 
 
 def get_person(person_id, params=None):
@@ -48,7 +48,7 @@ def get_person(person_id, params=None):
     Returns:
         json
     """
-    return mlbgame.data.request(7, primary_id=person_id, params=params)
+    return request(7, primary_key=person_id, params=params)
 
 def get_current_game_stats(person_id, params=None):
     """This endpoint allows you to pull the current game status for a given
@@ -82,5 +82,41 @@ def get_current_game_stats(person_id, params=None):
     Returns:
         json
     """
-    return mlbgame.data.request(7, 'stats/game/current', person_id, params)
+    return request(7, 'stats/game/current', primary_key=person_id,
+                   params=params)
 
+def get_game_stats(person_id, game_pk, params=None):
+    """This endpoint allows you to pull the game stats for a given player and
+    game.
+    Args:
+        person_id (int): Unique PLayer Identifier
+        game_pk (int): Unique Primary Key representing a game.
+        params (dict): Contains the group, and fields parameters described
+            below.
+
+    params:
+      person_id (required)
+        Description: Unique Player Identifier
+        Parameter Type: path
+        Data Type: integer
+      game_pk (required)
+        Description: Unique Primary Key representing a game.
+        Parameter Type: path
+        Data Type: integer
+      group *may not yet do anything
+        Description: Category of statistics to return. 0: hitting, 1: pitching,
+            2: fielding, 3: running
+        Format: 0, 1, 2, 3
+        Parameter Type: query
+        Data Type: array[string]
+      fields
+        Description: Comma delimited list of specific fields to be returned.
+        Format: topLevelNode, childNode, attribute
+        Parameter Type: query
+        Data Type: array[string]
+
+    Returns:
+        json
+    """
+    return request(7, 'stats/game', primary_key=person_id,
+                   secondary_key=game_pk, params=params)

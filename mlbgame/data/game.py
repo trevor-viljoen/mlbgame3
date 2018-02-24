@@ -9,7 +9,7 @@ endpoints.
    http://google.github.io/styleguide/pyguide.html
 """
 
-import mlbgame.data
+from mlbgame.data import request
 
 
 def get_boxscore(game_pk, params=None):
@@ -39,7 +39,7 @@ def get_boxscore(game_pk, params=None):
     Returns:
         json
     """
-    return mlbgame.data.request(4, game_pk, 'boxscore', params)
+    return request(4, 'boxscore', primary_key=game_pk, params=params)
 
 def get_color(game_pk, params=None):
     """
@@ -63,7 +63,7 @@ def get_color(game_pk, params=None):
         Parameter Type: query
         Data Type: array[string]
     """
-    return mlbgame.data.request(4, game_pk, 'feed/color', params)
+    return request(4, 'feed/color', primary_key=game_pk, params=params)
 
 def get_color_diff(game_pk, params=None):
     """
@@ -100,7 +100,8 @@ def get_color_diff(game_pk, params=None):
         Parameter Type: query
         Data Type: string
     """
-    return mlbgame.data.request(4, game_pk, 'feed/color/diffPatch', params)
+    return request(4, 'feed/color/diffPatch', primary_key=game_pk,
+                   params=params)
 
 def get_color_timestamps(game_pk, params=None):
     """
@@ -113,7 +114,8 @@ def get_color_timestamps(game_pk, params=None):
         Parameter Type: path
         Data Type: string
     """
-    return mlbgame.data.request(4, game_pk, 'feed/color/timestamps', params)
+    return request(4, 'feed/color/timestamps', primary_key=game_pk,
+                   params=params)
 
 def get_content(game_pk, params=None):
     """
@@ -129,7 +131,7 @@ def get_content(game_pk, params=None):
         Parameter Type: query
         Data Type: integer
     """
-    return mlbgame.data.request(4, game_pk, 'content', params)
+    return request(4, 'content', primary_key=game_pk, params=params)
 
 def get_context_metrics(game_pk, params=None):
     """
@@ -150,7 +152,7 @@ def get_context_metrics(game_pk, params=None):
         Parameter Type: query
         Data Type: array[string]
     """
-    return mlbgame.data.request(4, game_pk, 'contextMetrics', params)
+    return request(4, 'contextMetrics', primary_key=game_pk, params=params)
 
 def get_linescore(game_pk, params=None):
     """
@@ -172,7 +174,7 @@ def get_linescore(game_pk, params=None):
         Parameter Type: query
         Data Type: array[string]
     """
-    return mlbgame.data.request(4, game_pk, 'linescore', params)
+    return request(4, 'linescore', primary_key=game_pk, params=params)
 
 def get_live(game_pk, params=None):
     """
@@ -195,7 +197,7 @@ def get_live(game_pk, params=None):
         Parameter Type: query
         Data Type: array[string]
     """
-    return mlbgame.data.request(4, game_pk, 'feed/live', params)
+    return request(4, 'feed/live', primary_key=game_pk, params=params)
 
 def get_live_diff(game_pk, params=None):
     """
@@ -233,7 +235,7 @@ def get_live_diff(game_pk, params=None):
         Parameter Type: query
         Data Type: string
     """
-    return mlbgame.data.request(4, game_pk, 'feed/live/diffPatch', params)
+    return request(4, 'feed/live/diffPatch', primary_key=game_pk, params=params)
 
 def get_live_timestamps(game_pk, params=None):
     """
@@ -246,7 +248,7 @@ def get_live_timestamps(game_pk, params=None):
         Parameter Type: path
         Data Type: string
     """
-    return mlbgame.data.request(4, game_pk, 'feed/live/timestamps', params)
+    return request(4, 'feed/live/timestamps', primary_key=game_pk, params=params)
 
 def get_play_by_play(game_pk, params=None):
     """This endpoint allows you to pull the play by play for a game.
@@ -267,7 +269,7 @@ def get_play_by_play(game_pk, params=None):
         Parameter Type: query
         Data Type: array[string]
     """
-    return mlbgame.data.request(4, game_pk, 'playByPlay', params)
+    return request(4, 'playByPlay', primary_key=game_pk, params=params)
 
 def get_win_probability(game_pk, params=None):
     """
@@ -288,4 +290,4 @@ def get_win_probability(game_pk, params=None):
         Parameter Type: query
         Data Type: array[string]
     """
-    return mlbgame.data.request(4, game_pk, 'winProbability', params)
+    return request(4, 'winProbability', primary_key=game_pk, params=params)

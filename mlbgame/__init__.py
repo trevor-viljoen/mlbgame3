@@ -21,7 +21,8 @@ def linescore(game_pk, params=None):
 
 def play_by_play(game_pk, params=None):
     data = mlbgame.data.game.get_playbyplay(game_pk, params)
-    return mlbgame.game.PlayByPlay(data)
+    return data
+    #return mlbgame.game.PlayByPlay(data)
 
 def schedule(params={'sportId': 1, 'date': TODAY}):
     data = mlbgame.data.gameday.get_schedule(params)

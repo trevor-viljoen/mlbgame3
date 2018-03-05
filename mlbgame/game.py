@@ -11,7 +11,8 @@ class Info(object):
             if d['label'] == 'Umpires':
                 setattr(self, 'umpires', Info.umpires(d['value']))
             if d['label'] == 'WP':
-                setattr(self, 'wp', d['value'].rstrip('.'))
+                wp_list = Info.str_to_list(d['value'])
+                setattr(self, 'wild_pitches', wp_list)
             if d['label'] == 'IBB':
                 ibb_list = Info.str_to_list(d['value'])
                 setattr(self, 'ibb', ibb_list)
@@ -32,6 +33,13 @@ class Info(object):
                         fo_list.append({k: v[1]})
                 setattr(self, 'groundouts', go_list)
                 setattr(self, 'flyouts', fo_list)
+            if d['label'] == 'Inherited runners-scored':
+                rs_list = Info.str_to_list(d['value'])
+                rs_dict = Info.list_to_dict(rs_list)
+                setattr(self, 'inherited_runners-scored', rs_dict)
+            if d['label'] == 'Game Scores':
+                gs_list = Info.str_to_list(d['value'])
+                setattr(self, 'game_scores', Info.list_to_dict(gs_list))
             if d['label'] == 'Pitches-strikes':
                 ps_list = Info.str_to_list(d['value'])
                 ps_list = Info.list_to_dict(ps_list)

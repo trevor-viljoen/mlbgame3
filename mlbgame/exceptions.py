@@ -12,3 +12,5 @@ class ImplementationException(Exception):
 class ObjectNotFoundException(Exception):
     pass
 
+class ScheduleParamaterException(Exception):
+    pass

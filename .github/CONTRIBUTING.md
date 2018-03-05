@@ -4,9 +4,10 @@ The following guidelines are considered best practice for contributing to the ml
 
 #### Table of Contents
 
-[Code of Conduct](#code-of-conduct)
-[I just have a question](#questions)
-[Contributing](#contributing)
+* [Code of Conduct](#code-of-conduct)
+* [I just have a question](#questions)
+* [Contributing](#contributing)
+* [Additional Resources](#additional-resources)
 
 ## Code of Conduct
 ### Our Pledge
@@ -83,8 +84,8 @@ available at [http://contributor-covenant.org/version/1/4][version]
 [version]: http://contributor-covenant.org/version/1/4/
 
 ## Questions
-Please don't file an issue to ask a question. The best place for questions is the
-[![Join the mlbgame Slack Team](https://img.shields.io/badge/slack-join-blue.svg)](https://mlbgame-slack-invite.herokuapp.com/)
+Please don't file an issue to ask a question. The best place for questions is the mlbgame Slack Team.
+* Join the mlbgame Slack Team! [![Join Slack](https://img.shields.io/badge/slack-join-blue.svg)](https://mlbgame-slack-invite.herokuapp.com/)
 * Use the `#v3` channel for questions and general discussion about v3 of the mlbgame project.
 * Use the `#general` channel for everything else.
 

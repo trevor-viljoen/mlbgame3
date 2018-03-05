@@ -34,7 +34,8 @@ def request(pos, endpoint=None, primary_key=None, secondary_key=None,
     api_url = get_api_url(pos, endpoint, primary_key, secondary_key, params)
     headers = {
         'User-Agent': 'mlbgame/{0}'.format(mlbgame.version.__version__),
-        'Accept-encoding': 'gzip'
+        'Accept-encoding': 'gzip',
+        'Connection': 'close'
     }
     try:
         if params:

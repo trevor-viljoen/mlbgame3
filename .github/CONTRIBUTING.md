@@ -118,7 +118,7 @@ describing them and their relevance to fixing this issue.
 
 ```
 * Make sure your code follows the [Google Python Style
-  Guide](http://google.github.io/styleguide/pyguide.html).
+  Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md).
 * Make sure you have added the necessary tests for your changes.
 * Run all the tests to assure nothing else was accidentally broken.
 

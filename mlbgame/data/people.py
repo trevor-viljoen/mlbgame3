@@ -54,7 +54,7 @@ def get_current_game_stats(person_id, params=None):
     """This endpoint allows you to pull the current game status for a given
     player.
     Args:
-        person_id (int): Unique PLayer Identifier
+        person_id (int): Unique Player Identifier
         params (dict): Contains the person_ids, season, group, and fields
             parameters described below.
 
@@ -89,7 +89,7 @@ def get_game_stats(person_id, game_pk, params=None):
     """This endpoint allows you to pull the game stats for a given player and
     game.
     Args:
-        person_id (int): Unique PLayer Identifier
+        person_id (int): Unique Player Identifier
         game_pk (int): Unique Primary Key representing a game.
         params (dict): Contains the group, and fields parameters described
             below.

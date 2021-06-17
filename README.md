@@ -1,3 +1,7 @@
+THIS PROJECT IS DEPRECATED AND UNMANAGED/UNMAINTAINED in favor of a rewrite at https://github.com/trevor-viljoen/mlbapi
+
+
+
 # mlbgame v3
 
 [![Join Slack](https://img.shields.io/badge/slack-join-blue.svg)](https://mlbgame-slack-invite.herokuapp.com/)

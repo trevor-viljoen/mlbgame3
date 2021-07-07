@@ -10,6 +10,7 @@ endpoints.
 """
 
 from mlbgame.data import request
+from mlbgame.data import Endpoint
 
 
 def get_person(person_id, params=None):
@@ -48,7 +49,7 @@ def get_person(person_id, params=None):
     Returns:
         json
     """
-    return request(7, primary_key=person_id, params=params)
+    return request(Endpoint.PERSON, primary_key=person_id, params=params)
 
 def get_current_game_stats(person_id, params=None):
     """This endpoint allows you to pull the current game status for a given
@@ -82,8 +83,7 @@ def get_current_game_stats(person_id, params=None):
     Returns:
         json
     """
-    return request(7, 'stats/game/current', primary_key=person_id,
-                   params=params)
+    return request(Endpoint.PERSON, 'stats/game/current', primary_key=person_id, params=params)
 
 def get_game_stats(person_id, game_pk, params=None):
     """This endpoint allows you to pull the game stats for a given player and
@@ -118,5 +118,4 @@ def get_game_stats(person_id, game_pk, params=None):
     Returns:
         json
     """
-    return request(7, 'stats/game', primary_key=person_id,
-                   secondary_key=game_pk, params=params)
+    return request(Endpoint.PERSON, 'stats/game', primary_key=person_id, secondary_key=game_pk, params=params)

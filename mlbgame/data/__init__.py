@@ -8,9 +8,57 @@ import mlbgame.exceptions
 
 #TEST_URL = "https://statsapi.mlb.com/api/v1/game/447440/boxscore"
 API_VERSION = "v1"
-API = ("conference", "config", "division", "draft", "game", "homerunderby",
-       "league", "people", "schedule", "season", "sports", "standings",
-       "stats", "team", "venue")
+API_URL = "https://statsapi.mlb.com/api/{}".format(API_VERSION)
+
+
+# Endpoint constants point to the endpoint method name.
+class Endpoint(object):
+    ATTENDANCE = "attendance"
+    AWARDS = "awards"
+    CONFERENCE = "conferences"
+    DIVISION = "division"
+    DRAFT = "draft"
+    GAME = "game"
+    GAMEPACE = "gamePace"
+    HIGHLOW = "highLow"
+    HOMERUNDERBY = "homeRunDerby"
+    JOB = "jobs"
+    LEAGUE = "league"
+    PERSON = "people"
+    SCHEDULE = "schedule"
+    SEASON = "seasons"
+    SPORTS = "sports"
+    STANDINGS = "standings"
+    STATS = "stats"
+    TEAM = "teams"
+    VENUE = "venues"
+
+# Endpoints that include configuration information that likely won't change
+class EndpointConfig(object):
+    BASEBALL_STATS = "baseballStats"
+    EVENT_TYPES = "eventTypes"
+    GAME_STATUS = "gameStatus"
+    GAME_TYPES = "gameTypes"
+    HIT_TRAJECTORIES = "hitTrajectories"
+    JOB_TYPES = "jobTypes"
+    LANGUAGES = "languages"
+    LEAGUE_LEADER_TYPES = "leagueLeaderTypes"
+    LOGICAL_EVENTS = "logicalEvents"
+    METRICS = "metrics"
+    PITCH_CODES = "pitchCodes"
+    PITCH_TYPES = "pitchTypes"
+    PLATFORMS = "platforms"
+    POSITIONS = "positions"
+    REVIEW_REASONS = "reviewReasons"
+    ROSTER_TYPES = "rosterTypes"
+    SCHEDULE_EVENT_TYPES = "scheduleEventTypes"
+    SITUATION_CODES = "situation_codes"
+    SKY = "sky"
+    STANDINGS_TYPES = "standingsTypes"
+    STAT_GROUPS = "statGroups"
+    STAT_TYPES = "statTypes"
+    WIND_DIRECTION = "windDirection"
+
 
 def request(pos, endpoint=None, primary_key=None, secondary_key=None,
             params=None):
@@ -57,29 +105,24 @@ def request(pos, endpoint=None, primary_key=None, secondary_key=None,
         raise e
     return json_data
 
-def get_api_url(pos, endpoint=None, primary_key=None, secondary_key=None,
-                params=None):
-    if pos == 4:
-        base_url = "https://statsapi.mlb.com/api/{0}/{1}/{2}/{3}"
-        return base_url.format(API_VERSION, API[pos], primary_key, endpoint)
-    elif pos == 7:
+def get_api_url(method, endpoint=None, primary_key=None, secondary_key=None, params=None):
+    if method == Endpoint.GAME:
+        return "{0}/{1}/{2}/{3}".format(API_URL, method, primary_key, endpoint)
+
+    elif method == Endpoint.PERSON:
         if endpoint:
             if secondary_key:
-                base_url = "https://statsapi.mlb.com/api/{0}/{1}/{2}/{3}/{4}"
-                return base_url.format(API_VERSION, API[pos], primary_key,
-                                       endpoint, secondary_key)
+                return "{0}/{1}/{2}/{3}/{4}".format(API_URL, method, primary_key, endpoint, secondary_key)
             else:
-                base_url = "https://statsapi.mlb.com/api/{0}/{1}/{2}/{3}"
-                return base_url.format(API_VERSION, API[pos], primary_key,
-                                       endpoint)
+                return "{0}/{1}/{2}/{3}".format(API_URL, method, primary_key, endpoint)
         else:
-            base_url = "https://statsapi.mlb.com/api/{0}/{1}/{2}"
-            return base_url.format(API_VERSION, API[pos], primary_key)
-    elif pos == 8:
-        base_url = "https://statsapi.mlb.com/api/{0}/{1}"
-        return base_url.format(API_VERSION, API[pos])
+            return "{1}/{2}/{3}".format(API_URL, method, primary_key)
+
+    elif method == Endpoint.SCHEDULE:
+        return "{0}/{1}".format(API_URL, method)
+
     else:
-        error = 'The {0} API is not yet implemented.'.format(API[pos])
+        error = 'The {0} API is not yet implemented.'.format(method)
         raise mlbgame.exceptions.ImplementationException(error)
 
 # Not yet implemented

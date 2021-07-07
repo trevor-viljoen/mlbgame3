@@ -11,6 +11,7 @@ endpoints.
 
 from datetime import datetime
 from mlbgame.data import request
+from mlbgame.data import Endpoint
 import mlbgame.exceptions
 
 TODAY = datetime.now().strftime("%m/%d/%Y")
@@ -121,4 +122,4 @@ def get_schedule(params={'sportId': 1, 'date': TODAY}):
         if 'teamId' not in params.keys():
             error = 'Query contains opponentId with no teamId.'
             raise mlbgame.exceptions.ScheduleParamaterException(error)
-    return request(8, 'schedule', params=params)
+    return request(Endpoint.SCHEDULE, 'schedule', params=params)
